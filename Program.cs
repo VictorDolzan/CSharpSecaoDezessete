@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Globalization;
 using CSharpSecaoDezessete.AtividadeIComparable;
 using CSharpSecaoDezessete.AtividadeIComparable.Entities;
+using CSharpSecaoDezessete.AtividadeDelegates;
+using CSharpSecaoDezessete.AtividadeDelegates.Service;
 
 namespace CSharpSecaoDezessete
 {
@@ -14,7 +16,8 @@ namespace CSharpSecaoDezessete
     {
         public static void Main(string[] args)
         {
-            AtividadeIComparable.AtividadeIComparable.ExecutarAtividadeIComparable();
+            //AtividadeIComparable.AtividadeIComparable.ExecutarAtividadeIComparable();
+            AtividadeDelegates.AtividadeDelegates.ExecutarAtividadeDelegate();
         }
     }
 }
