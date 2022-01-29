@@ -1,10 +1,12 @@
-﻿﻿using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using CSharpSecaoDezessete.AtividadeIComparable;
+using CSharpSecaoDezessete.AtividadeIComparable.Entities;
 
 namespace CSharpSecaoDezessete
 {
@@ -12,7 +14,7 @@ namespace CSharpSecaoDezessete
     {
         public static void Main(string[] args)
         {
-            
+            AtividadeIComparable.AtividadeIComparable.ExecutarAtividadeIComparable();
         }
     }
 }
