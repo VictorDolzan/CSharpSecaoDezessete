@@ -15,6 +15,8 @@ using CSharpSecaoDezessete.AtividadePredicate;
 using CSharpSecaoDezessete.AtividadePredicate.Entities;
 using CSharpSecaoDezessete.AtividadeDelegateAction;
 using CSharpSecaoDezessete.AtividadeDelegateAction.Entities;
+using CSharpSecaoDezessete.AtividadeDelegateFunc;
+using CSharpSecaoDezessete.AtividadeDelegateFunc.Entities;
 
 namespace CSharpSecaoDezessete
 {
@@ -26,7 +28,8 @@ namespace CSharpSecaoDezessete
            //AtividadeDelegates.AtividadeDelegates.ExecutarAtividadeDelegate();
             //AtividadeMulticastDelegates.AtividadeMulticastDelegates.ExecutarAtividadeMulticastDelegates();
             //AtividadePredicate.AtividadePredicate.ExecutarAtividadePredicate();
-            AtividadeDelegateAction.AtividadeDelegateAction.ExecutarAtividadeDelegateAction();
+            //AtividadeDelegateAction.AtividadeDelegateAction.ExecutarAtividadeDelegateAction();
+            AtividadeDelegateFunc.AtividadeDelegateFunc.ExecutarAtividadeDelegateFunc();
         }
     }
 }
