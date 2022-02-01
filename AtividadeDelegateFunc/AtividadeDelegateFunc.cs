@@ -23,7 +23,7 @@ namespace CSharpSecaoDezessete.AtividadeDelegateFunc
             //Func<Product, string> func = p => p.Name.ToUpper();
 
             List<string> result = list.Select(p => p.Name.ToUpper()).ToList();
-            //List<string> result = list.Select(NameUpper).ToList();
+            //List<string> result = list.Select(NameUpper ou func).ToList();
 
             foreach(string s in result)
             {
