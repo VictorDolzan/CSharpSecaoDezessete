@@ -14,7 +14,7 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
         static void Print<T>(string message, IEnumerable<T> collection)
         {
             Console.WriteLine(message);
-            foreach(T obj in collection)
+            foreach (T obj in collection)
             {
                 Console.WriteLine(obj);
             }
@@ -22,17 +22,20 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
         }
         public static void ExecutarAtividadeLINQLambda()
         {
-            Category c1 = new Category(){
+            Category c1 = new Category()
+            {
                 Id = 1,
                 Name = "Tools",
                 Tier = 2
             };
-            Category c2 = new Category(){
+            Category c2 = new Category()
+            {
                 Id = 2,
                 Name = "Computers",
                 Tier = 1
             };
-            Category c3 = new Category(){
+            Category c3 = new Category()
+            {
                 Id = 3,
                 Name = "Electronics",
                 Tier = 1
@@ -56,7 +59,7 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
             var r1 = products
             .Where(p => p.PCategory.Tier == 1 && p.Price < 900.0);
             Print("Tier 1 and Price < 900: ", r1);
-            
+
             var r2 = products
             .Where(p => p.PCategory.Name == "Tools")
             .Select(p => p.PName);
@@ -64,7 +67,7 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
 
             var r3 = products
             .Where(p => p.PName[0] == 'C')
-            .Select(p => new{ p.PName, p.Price, CategoryName = p.PCategory.Name });
+            .Select(p => new { p.PName, p.Price, CategoryName = p.PCategory.Name });
             Print("Names of Products that starts with letter C: ", r3);
 
             var r4 = products
@@ -79,20 +82,72 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
             var r6 = products
             .FirstOrDefault();
             Console.WriteLine("First or Default test1: " + r6);
+            Console.WriteLine();
 
             var r7 = products
             .Where(p => p.Price > 3000.0).FirstOrDefault();
             Console.WriteLine("First or Default test2: " + r7);
+            Console.WriteLine();
 
             var r8 = products
             .Where(p => p.PId == 3)
             .SingleOrDefault();
             Console.WriteLine("Single or Default test1: " + r8);
+            Console.WriteLine();
 
-             var r9 = products
-            .Where(p => p.PId == 30)
-            .SingleOrDefault();
+            var r9 = products
+           .Where(p => p.PId == 30)
+           .SingleOrDefault();
             Console.WriteLine("Single or Default test2: " + r9);
+            Console.WriteLine();
+
+            var r10 = products
+            .Max(p => p.Price);
+            Console.WriteLine("Max Price: " + r10);
+            Console.WriteLine();
+
+            var r11 = products
+            .Min(p => p.Price);
+            Console.WriteLine("Min value: " + r11);
+            Console.WriteLine();
+
+            var r12 = products
+            .Where(p => p.PCategory.Id == 1)
+            .Sum(p => p.Price);
+            Console.WriteLine("Category 1 Sum prices: " + r12);
+            Console.WriteLine();
+
+            var r13 = products
+            .Where(p => p.PCategory.Id == 1)
+            .Average(p => p.Price);
+            Console.WriteLine("Category 1 Average prices: " + r13);
+            Console.WriteLine();
+
+            var r14 = products
+            .Where(p => p.PCategory.Id == 5)
+            .Select(p => p.Price)
+            .DefaultIfEmpty(0.0)
+            .Average();
+            Console.WriteLine("Category 5 Average prices: " + r14);
+
+            var r15 = products
+            .Where(p => p.PCategory.Id == 1)
+            .Select(p => p.Price)
+            .Aggregate(0.0, (x, y) => x + y);
+            Console.WriteLine("Category 1 aggregate sum: " + r15);
+            Console.WriteLine();
+
+            var r16 = products
+            .GroupBy(p => p.PCategory);
+            foreach(IGrouping<Category, Product> group in r16)
+            {
+                Console.WriteLine("Category " + group.Key.Name + ":"); 
+                foreach(Product p in group)
+                {
+                    Console.WriteLine(p);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
