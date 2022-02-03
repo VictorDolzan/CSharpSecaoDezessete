@@ -56,27 +56,52 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
                 new Product(){ PId = 11, PName = "Level", Price = 70.0, PCategory = c1}
             };
 
-            var r1 = products
-            .Where(p => p.PCategory.Tier == 1 && p.Price < 900.0);
+            // var r1 = products
+            // .Where(p => p.PCategory.Tier == 1 && p.Price < 900.0);
+            var r1 =
+                from p in products
+                where p.PCategory.Tier == 1 && p.Price < 900.0
+                select p;
             Print("Tier 1 and Price < 900: ", r1);
 
-            var r2 = products
-            .Where(p => p.PCategory.Name == "Tools")
-            .Select(p => p.PName);
+            // var r2 = products
+            // .Where(p => p.PCategory.Name == "Tools")
+            // .Select(p => p.PName);
+            var r2 =
+                from p in products
+                where p.PCategory.Name == "Tools"
+                select p.PName;
             Print("Names of Products from Tools: ", r2);
 
-            var r3 = products
-            .Where(p => p.PName[0] == 'C')
-            .Select(p => new { p.PName, p.Price, CategoryName = p.PCategory.Name });
+            // var r3 = products
+            // .Where(p => p.PName[0] == 'C')
+            // .Select(p => new { p.PName, p.Price, CategoryName = p.PCategory.Name });
+            var r3 =
+                from p in products
+                where p.PName[0] == 'C'
+                select new {
+                    p.PName,
+                    p.Price,
+                    CategoryName = p.PCategory.Name 
+                };
             Print("Names of Products that starts with letter C: ", r3);
 
-            var r4 = products
-            .Where(p => p.PCategory.Tier == 1)
-            .OrderBy(p => p.Price)
-            .ThenBy(p => p.PName);
+            // var r4 = products
+            // .Where(p => p.PCategory.Tier == 1)
+            // .OrderBy(p => p.Price)
+            // .ThenBy(p => p.PName);
+            var r4 =
+                from p in products
+                where p.PCategory.Tier == 1
+                orderby p.PName
+                orderby p.Price
+                select p;
             Print("Products with tier 1 order by price then by name: ", r4);
 
-            var r5 = r4.Skip(2).Take(4);
+            // var r5 = r4.Skip(2).Take(4);
+            var r5 =
+                (from p in r4
+                select p).Skip(2).Take(4);
             Print("Tier 1 order by price then by name skip 2 take 4: ", r5);
 
             var r6 = products
@@ -84,8 +109,12 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
             Console.WriteLine("First or Default test1: " + r6);
             Console.WriteLine();
 
-            var r7 = products
-            .Where(p => p.Price > 3000.0).FirstOrDefault();
+            // var r7 = products
+            // .Where(p => p.Price > 3000.0).FirstOrDefault();
+            var r7 =
+                (from p in products
+                where p.Price > 3000.0
+                select p).FirstOrDefault();
             Console.WriteLine("First or Default test2: " + r7);
             Console.WriteLine();
 
@@ -137,12 +166,15 @@ namespace CSharpSecaoDezessete.AtividadeLINQLambda
             Console.WriteLine("Category 1 aggregate sum: " + r15);
             Console.WriteLine();
 
-            var r16 = products
-            .GroupBy(p => p.PCategory);
-            foreach(IGrouping<Category, Product> group in r16)
+            // var r16 = products
+            // .GroupBy(p => p.PCategory);
+            var r16 = 
+                from p in products
+                group p by p.PCategory;
+            foreach (IGrouping<Category, Product> group in r16)
             {
-                Console.WriteLine("Category " + group.Key.Name + ":"); 
-                foreach(Product p in group)
+                Console.WriteLine("Category " + group.Key.Name + ":");
+                foreach (Product p in group)
                 {
                     Console.WriteLine(p);
                 }
