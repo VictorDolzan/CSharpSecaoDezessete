@@ -22,6 +22,8 @@ using CSharpSecaoDezessete.AtividadeLINQLambda;
 using CSharpSecaoDezessete.AtividadeLINQLambda.Entities;
 using CSharpSecaoDezessete.ExercicioResolvido;
 using CSharpSecaoDezessete.ExercicioResolvido.Entities;
+using CSharpSecaoDezessete.ExercicioFixacao;
+using CSharpSecaoDezessete.ExercicioFixacao.Entities;
 
 namespace CSharpSecaoDezessete
 {
@@ -37,7 +39,8 @@ namespace CSharpSecaoDezessete
             //AtividadeDelegateFunc.AtividadeDelegateFunc.ExecutarAtividadeDelegateFunc();
            // AtividadeIntroducaoLINQ.AtividadeIntroducaoLINQ.ExecutarAtividadeIntroducaoLINQ();
            //AtividadeLINQLambda.AtividadeLINQLambda.ExecutarAtividadeLINQLambda();
-           ExercicioResolvido.ExercicioResolvido.ExecutarExercicioResolvido();
+           //ExercicioResolvido.ExercicioResolvido.ExecutarExercicioResolvido();
+           ExercicioFixacao.ExercicioFixacao.ExecutarExercicioFixacao();
         }
     }
 }
